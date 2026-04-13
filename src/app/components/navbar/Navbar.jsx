@@ -1,15 +1,18 @@
-
+'use client'
 import React from 'react';
 import NavStructure from './NavStructure';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+  const pathName = usePathname()
   const links = 
   <div className='flex justify-center gap-5'>
-    <NavStructure href={'/'}>Home</NavStructure>
-    <NavStructure href={'/about'}>About</NavStructure>
+    <NavStructure className={pathName === '/'? 'border-2 border-green-500' : ''} href={'/'}>Home</NavStructure>
+    <NavStructure href={'/about'} className={pathName === '/about'? 'border-2 border-green-500' : ''}>About</NavStructure>
     <NavStructure href={'/contact'}>Contact</NavStructure>
     <NavStructure href={'/blogs'}>Blogs</NavStructure>
     <NavStructure href={'/dashboard'}>DashBoard</NavStructure>
+    <NavStructure href={'/users'}>Users</NavStructure>
   </div>
   return (
     <div className="navbar bg-base-100 shadow-sm">
